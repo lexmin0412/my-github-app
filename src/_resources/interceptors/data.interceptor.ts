@@ -55,8 +55,6 @@ export default function (chain) {
 				? resultData.code.toString()
 				: resultData.code
 
-			console.error('resultData', resultData)
-
 			// 3. 接口返回错误code时前端错误抛出
 			// 4. 登录失效前端逻辑处理
 			if (LOGIN_FAILURE_LIST.includes(resultData.code)) {
@@ -94,7 +92,6 @@ export default function (chain) {
 					Toast.info(resultData.msg)
 				}
 			}
-			console.error('返回之前的resultData', resultData)
 			return Promise.resolve(resultData)
 		})
 		.catch(err => {
