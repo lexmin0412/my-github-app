@@ -1,6 +1,6 @@
 export default defineAppConfig({
 	entryPagePath: 'index/index',
-	pages: ['index/index', 'user/index'],
+	pages: ['index/index', 'user/index', 'user/detail'],
 	subpackages: [
 		{
 			root: 'default',
@@ -20,7 +20,7 @@ export default defineAppConfig({
 		list: [
 			{
 				pagePath: 'index/index',
-				text: '首页',
+				text: '发现',
 				iconPath: './_resources/assets/icons/home.png',
 				selectedIconPath: './_resources/assets/icons/home_selected.png',
 			},

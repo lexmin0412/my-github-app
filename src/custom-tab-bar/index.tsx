@@ -12,7 +12,7 @@ interface TabbarItem {
 const list: TabbarItem[] = [
 	{
 		pagePath: 'index/index',
-		text: '首页',
+		text: '发现',
 	},
 	{
 		pagePath: 'user/index',

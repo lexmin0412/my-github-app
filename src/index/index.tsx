@@ -1,37 +1,86 @@
-import React, { useEffect } from 'react'
+import { usePageScroll } from '@tarojs/taro'
+import React, { useEffect, useState } from 'react'
 import { View } from '@tarojs/components'
-import CustomNavHeader from '@/components/navigation_header'
-import { XButton } from 'taro-x-ui'
 import Router from '@/utils/route'
+import { Avatar, Loading, List, Toast, Search, Navbar } from "@taroify/core"
+import searchService from '@/services/github/search.service'
+
 
 import './index.scss'
 
 const Index = (): JSX.Element => {
-	useEffect(() => {
-		console.log('process.env', process.env.TARO_ENV)
-		console.log('TARO_API_BASE', TARO_API_BASE)
-	}, [])
 
-	/**
-	 * 跳转demo页面
-	 */
-	const jumpToDemo = (demoType: 'router') => {
-		switch (demoType) {
-			case 'router':
-				Router.navigateTo({
-					url: '/demo/router/router',
-				})
-				break
+	const [value, setValue] = useState("")
+	const [open, setOpen] = useState(false)
+	const [list, setList] = useState([])
 
-			default:
-				break
+	const [hasMore, setHasMore] = useState(true)
+	const [loading, setLoading] = useState(false)
+	const [scrollTop, setScrollTop] = useState(0)
+
+	usePageScroll(({scrollTop: aScrollTop}) => setScrollTop(aScrollTop))
+
+	const handleSearch = async() => {
+		console.log("handleSearch", value);
+		setLoading(true)
+		try {
+			const result: any = await searchService.searchByType({
+				type: 'users',
+				keyword: value
+			})
+			console.log('result', result);
+			if ( result.code === '0' && result.data ) {
+				setList(result.data.items)
+				setHasMore(list.length < 40)
+				setLoading(false)
+			}
+		} catch (error) {
+			console.log(error);
 		}
+	}
+
+	const handleUserItemClick = (userName: string) => {
+		Router.navigateTo({
+			url: `/user/detail?userName=${userName}`
+		})
 	}
 
 	return (
 		<View className='index'>
-			<CustomNavHeader title='首页' />
-			<XButton onClick={() => jumpToDemo('router')}>路由跳转</XButton>
+			<Navbar title="发现" />
+			<Toast open={open} onClose={() => setOpen(false)}>
+				取消
+			</Toast>
+			<Search
+				className='search-bar'
+				value={value}
+				placeholder="请输入搜索关键词，暂只支持搜索用户"
+				onChange={(e) => setValue(e.detail.value)}
+				onCancel={() => setOpen(true)}
+				onSearch={()=>handleSearch()}
+			/>
+			<List
+				loading={loading}
+				hasMore={hasMore}
+				scrollTop={scrollTop}
+				onLoad={() => handleSearch}
+			>
+				{
+					list.map((item) => (
+						<div className='user-item'
+							key={item.id}
+							onClick={()=>handleUserItemClick(item.login)}
+						>
+							<Avatar className='user-item-avatar' size='small' src={item.avatar_url} />
+							<div className='user-item-name'>{item.login}</div>
+						</div>
+					))
+				}
+				<List.Placeholder>
+					{loading && <Loading>加载中...</Loading>}
+					{!hasMore && "没有更多了"}
+				</List.Placeholder>
+			</List>
 		</View>
 	)
 }

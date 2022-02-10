@@ -1,7 +1,16 @@
 @import './../_resources/styles/var.scss';
 
-.test {
-	color: $baseFontSize;
-	font-size: $baseFontColor;
-	box-sizing: border-box;
+.user-item {
+	display: flex;
+	align-items: center;
+	padding: 20px 24px;
+
+	&-avatar {
+		margin-right: 20px;
+	}
+
+	&-name {
+		font-size: 32px;
+		color: #333;
+	}
 }

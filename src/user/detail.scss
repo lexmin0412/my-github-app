@@ -1,0 +1,66 @@
+.user-detail-page {
+  width: 100%;
+}
+
+.user-info {
+	padding: 0 24px;
+
+	&-top {
+		padding-bottom: 20px;
+		border-bottom: 1px solid #eee;
+
+		.user-avatar-box {
+			width: 100px;
+			height: 100px;
+			margin-bottom: 10px;
+		}
+
+		.user-name {
+			margin-bottom: 10px;
+			font-size: 36px;
+			color: #333;
+		}
+		.user-bio {
+			font-size: 28px;
+			color: #999;
+		}
+	}
+
+	.user-stats {
+		display: flex;
+		align-items: center;
+		padding: 20px 0;
+
+		&-item {
+			margin-right: 40px;
+
+			&-count {
+				font-size: 32px;
+				color: #333;
+			}
+			&-title {
+				font-size: 24px;
+				color:#999;
+			}
+		}
+	}
+
+	.user-base-info {
+		border-top: 1px solid #eee;
+		padding-top: 20px;
+
+		&-item {
+			margin-bottom: 10px;
+
+			&-title {
+				font-size: 24px;
+				color: #999;
+			}
+			&-value {
+				font-size: 32px;
+				color: #333;
+			}
+		}
+	}
+
+}
