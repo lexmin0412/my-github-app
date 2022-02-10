@@ -6,5 +6,16 @@ module.exports = {
       framework: 'react',
       ts: true
     }]
-  ]
+  ],
+	plugins: [
+    [
+      "import",
+      {
+        libraryName: "@taroify/core",
+        libraryDirectory: "",
+        style: true,
+      },
+      "@taroify/core",
+    ],
+	]
 }
