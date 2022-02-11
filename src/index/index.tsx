@@ -1,10 +1,9 @@
 import { usePageScroll } from '@tarojs/taro'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { View } from '@tarojs/components'
 import Router from '@/utils/route'
 import { Avatar, Loading, List, Toast, Search, Navbar } from "@taroify/core"
 import searchService from '@/services/github/search.service'
-
 
 import './index.scss'
 

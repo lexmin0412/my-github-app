@@ -7,6 +7,7 @@ import { View, Image } from '@tarojs/components'
 import { Navbar } from '@taroify/core'
 import dayjs from 'dayjs'
 
+import Router from '@/utils/route'
 import usersService from '@/services/github/users.service'
 
 import './detail.scss'
@@ -67,6 +68,38 @@ const Detail = (): JSX.Element => {
 		})
 	}, [])
 
+	const handleStatsItemClick = (field: 'public_repos' | 'following' | 'followers') => {
+		switch (field) {
+			case 'public_repos':
+				Router.navigateTo({
+					url: `/user/repos`,
+					query: {
+						userName: userInfo.login,
+						type: 'repos'
+					}
+				})
+				break;
+			case 'followers':
+				Router.navigateTo({
+					url: `/follow/index`,
+					query: {
+						userName: userInfo.login,
+						type: 'followers'
+					}
+				})
+				break;
+			case 'following':
+				Router.navigateTo({
+					url: `/follow/index`,
+					query: {
+						userName: userInfo.login,
+						type: 'following'
+					}
+				})
+				break;
+		}
+	}
+
 	return (
 		<View className='user-detail-page'>
 			<Navbar title="用户详情" />
@@ -88,6 +121,7 @@ const Detail = (): JSX.Element => {
 							return (
 								<View className="user-stats-item"
 									key={item.field}
+									onClick={()=>handleStatsItemClick(item.field)}
 								>
 									<View className="user-stats-item-count">
 										{userInfo[item.field]}

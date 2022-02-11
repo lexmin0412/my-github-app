@@ -1,6 +1,6 @@
 export default defineAppConfig({
 	entryPagePath: 'index/index',
-	pages: ['index/index', 'user/index', 'user/detail'],
+	pages: ['index/index', 'user/index', 'user/detail', 'user/repos'],
 	subpackages: [
 		{
 			root: 'default',
@@ -14,6 +14,10 @@ export default defineAppConfig({
 			root: 'webview',
 			pages: ['index'],
 		},
+		{
+			root: 'follow',
+			pages: ['index']
+		}
 	],
 	tabBar: {
 		custom: true,

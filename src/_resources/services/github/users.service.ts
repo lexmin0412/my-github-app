@@ -20,6 +20,21 @@ class UsersService extends BaseRequest {
 		const {userName} = payload
 		return this.get({
 			url: `/github/users/${userName}`,
+			data: {},
+		})
+	}
+
+	/**
+	 * 获取用户某项数据
+	 */
+	getUserDataByType(payload: {
+		userName: string
+		type: 'followers' | 'following' | 'starred' | 'repos'
+		[key: string]: any
+	}) {
+		const { userName, type } = payload
+		return this.get({
+			url: `/github/users/${userName}/${type}`,
 			data: payload,
 		})
 	}

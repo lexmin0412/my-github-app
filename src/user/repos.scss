@@ -1,0 +1,40 @@
+.users-repos-page {
+  width: 100%;
+}
+
+.repo-item {
+	border-bottom: 1px solid #eee;
+	padding: 20px 24px;
+
+	&-header {
+		display: flex;
+		align-items: center;
+	}
+	&-title {
+		font-size: 28px;
+		font-weight: 700;
+		color: #333;
+		flex: 1;
+	}
+	&-starrgazer {
+		font-size: 24px;
+		color: #333;
+	}
+	&-desc {
+		font-size: 24px;
+		color: #999;
+	}
+	&-bottom {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	&-language {
+		font-size: 28px;
+		color: #999;
+	}
+	&-update-time {
+		font-size: 24px;
+		color: #999;
+	}
+}
