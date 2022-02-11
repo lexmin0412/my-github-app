@@ -4,14 +4,14 @@
 
 import React from 'react'
 import { View } from '@tarojs/components'
-import CustomNavigationHeader from '@/components/navigation_header'
+import { Navbar } from '@taroify/core'
 
 import './404.scss'
 
 const NotFound = (): JSX.Element => {
 	return (
 		<View className='common-notFound-page'>
-			<CustomNavigationHeader title='404 Not Found' />
+			<Navbar title='404页面' />
 			<View>404页面</View>
 		</View>
 	)
