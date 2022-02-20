@@ -11,7 +11,7 @@ const config = {
 			https: false,
 			proxy: {
 				'/api': {
-					target: 'https://api.cellerchan.top',
+					target: 'http://localhost:9080',
 					changeOrigin: true,
 					ws: false,
 					pathRewrite: {
