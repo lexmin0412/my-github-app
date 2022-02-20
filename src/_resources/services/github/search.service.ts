@@ -1,11 +1,11 @@
 import BaseRequest from '@/utils/request'
-import {HOSTS} from '@/constants/index'
+import { HOSTS } from '@/constants/index'
 
 /**
- * 药品相关服务
+ * 搜索服务
  */
-class UsersService extends BaseRequest {
-	constructor () {
+class SearchService extends BaseRequest {
+	constructor() {
 		super({
 			hostKey: HOSTS.TARO_API_BASE,
 		})
@@ -14,10 +14,7 @@ class UsersService extends BaseRequest {
 	/**
 	 * 获取用户信息
 	 */
-	searchByType(payload: {
-		type: string
-		keyword: string
-	}) {
+	searchByType(payload: { type: string; keyword: string }) {
 		const { type, keyword } = payload
 		return this.get({
 			url: `/github/search/${type}?q=${keyword}`,
@@ -26,4 +23,4 @@ class UsersService extends BaseRequest {
 	}
 }
 
-export default new UsersService()
+export default new SearchService()
