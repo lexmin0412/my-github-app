@@ -21,5 +21,9 @@
   - [x] 关注
   - [x] 粉丝
 - 登陆
-  - [ ] github登录
+  - [ ] github 登录
 - 💰 更多特性持续迭代中...
+
+## 参考
+
+- [github api v3](https://docs.github.com/cn/rest/overview/endpoints-available-for-github-apps)
