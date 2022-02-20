@@ -1,11 +1,11 @@
 import BaseRequest from '@/utils/request'
-import {HOSTS} from '@/constants/index'
+import { HOSTS } from '@/constants/index'
 
 /**
- * 药品相关服务
+ * 用户服务
  */
 class UsersService extends BaseRequest {
-	constructor () {
+	constructor() {
 		super({
 			hostKey: HOSTS.TARO_API_BASE,
 		})
@@ -14,10 +14,8 @@ class UsersService extends BaseRequest {
 	/**
 	 * 获取用户信息
 	 */
-	getUserInfo(payload: {
-		userName: string
-	}) {
-		const {userName} = payload
+	getUserInfo(payload: { userName: string }) {
+		const { userName } = payload
 		return this.get({
 			url: `/github/users/${userName}`,
 			data: {},
@@ -29,7 +27,7 @@ class UsersService extends BaseRequest {
 	 */
 	getUserDataByType(payload: {
 		userName: string
-		type: 'followers' | 'following' | 'starred' | 'repos'
+		type: 'followers' | 'following' | 'starred' | 'repos' | 'received_events'
 		[key: string]: any
 	}) {
 		const { userName, type } = payload
