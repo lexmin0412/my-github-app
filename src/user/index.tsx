@@ -4,7 +4,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { View } from '@tarojs/components'
-import { Navbar, Cell, Avatar } from '@taroify/core'
+import { Navbar, Cell, Avatar, Sticky } from '@taroify/core'
 
 import Router from '@/utils/route'
 import usersService from '@/services/github/users.service'
@@ -15,86 +15,87 @@ import toast from '@/utils/toast'
 const fileds = [
 	{
 		title: '项目',
-		field: 'public_repos'
+		field: 'public_repos',
 	},
 	{
 		title: '关注',
-		field: 'following'
+		field: 'following',
 	},
 	{
 		title: '粉丝',
-		field: 'followers'
-	}
+		field: 'followers',
+	},
 ]
 
 const userName = 'lexmin0412'
 
 const UserIndex = (): JSX.Element => {
-
 	const [userInfo, setUserInfo] = useState({})
 
 	useEffect(() => {
-		usersService.getUserInfo({
-			userName: 'lexmin0412'
-		}).then((res: any) => {
-			setUserInfo(res.data)
-		})
+		usersService
+			.getUserInfo({
+				userName: 'lexmin0412',
+			})
+			.then((res: any) => {
+				setUserInfo(res.data)
+			})
 	}, [])
 
-	const handleFuncClick = (field: 'public_repos' | 'following' | 'followers') => {
+	const handleFuncClick = (
+		field: 'public_repos' | 'following' | 'followers'
+	) => {
 		switch (field) {
 			case 'public_repos':
 				Router.navigateTo({
 					url: `/user/repos`,
 					query: {
 						userName,
-						type: 'repos'
-					}
+						type: 'repos',
+					},
 				})
-				break;
+				break
 			case 'followers':
 				Router.navigateTo({
 					url: `/follow/index`,
 					query: {
 						userName,
-						type: 'followers'
-					}
+						type: 'followers',
+					},
 				})
-				break;
+				break
 			case 'following':
 				Router.navigateTo({
 					url: `/follow/index`,
 					query: {
 						userName,
-						type: 'following'
-					}
+						type: 'following',
+					},
 				})
-				break;
+				break
 			default:
 				toast.info('非法类型～')
-				break;
+				break
 		}
 	}
 
 	return (
 		<View className='user-index-page'>
-			<Navbar title={userInfo.login} />
-			<Avatar src={userInfo.avatar_url}
-				size="large"
-				className='user-avatar'
-			/>
-			{
-				fileds.map((item)=>{
-					return (
-						<Cell title={item.title}
-							key={item.field}
-							onClick={()=>handleFuncClick(item.field)}
-						>
-							{userInfo[item.field]}
-						</Cell>
-					)
-				})
-			}
+			<Sticky>
+				<Navbar title={userInfo.login} />
+			</Sticky>
+			<Avatar src={userInfo.avatar_url} size='large' className='user-avatar' />
+			{fileds.map(item => {
+				return (
+					<Cell
+						title={item.title}
+						key={item.field}
+						onClick={() => handleFuncClick(item.field)}
+					>
+						{userInfo[item.field]}
+					</Cell>
+				)
+			})}
 		</View>
 	)
 }
