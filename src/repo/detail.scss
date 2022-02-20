@@ -1,0 +1,57 @@
+.repo-detail-page {
+	width: 100%;
+	padding: 0 24px;
+	box-sizing: border-box;
+
+	.repo-desc {
+		font-size: 24px;
+		color: #666;
+	}
+
+	.icon-data-group {
+		display: flex;
+		margin-top: 20px;
+
+		.icon-data-item {
+			display: flex;
+			align-items: center;
+			margin-right: 16px;
+			font-size: 28px;
+			color: #666;
+
+			.icon-data-text {
+				margin-left: 6px;
+			}
+		}
+	}
+	.owner {
+		margin-top: 20px;
+
+		&-title {
+			font-size: 24px;
+			color: #999;
+			margin-bottom: 10px;
+		}
+		&-info {
+			display: flex;
+			align-items: center;
+
+			.owner-avatar {
+				width: 100px;
+				height: 100px;
+				margin-right: 20px;
+				border-radius: 10px;
+			}
+			.owner-info-right {
+				.owner-info-name {
+					font-size: 28px;
+					color: #333;
+				}
+				.repo-created-time {
+					font-size: 24px;
+					color: #666;
+				}
+			}
+		}
+	}
+}
