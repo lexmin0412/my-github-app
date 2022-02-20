@@ -1,0 +1,40 @@
+.activity-index-page {
+	width: 100%;
+	background-color: #eff0f5;
+
+	.activity-list {
+		padding: 12px;
+
+		.activity-item {
+			border-radius: 10px;
+			background-color: #fff;
+			padding: 10px;
+			margin-bottom: 20px;
+
+			&-top {
+				display: flex;
+				align-items: center;
+
+				.activity-item-avatar {
+					width: 60px;
+					height: 60px;
+					border-radius: 10px;
+				}
+				.activity-item-name {
+					flex: 1;
+					margin-left: 20px;
+					font-size: 32px;
+					color: #333;
+				}
+			}
+			&-content {
+				padding: 10px 0;
+				font-size: 28px;
+			}
+			&-bottom {
+				font-size: 24px;
+				color: #666;
+			}
+		}
+	}
+}
