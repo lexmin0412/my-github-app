@@ -6,11 +6,11 @@ import { usePageScroll } from '@tarojs/taro'
 import React, { useEffect, useState } from 'react'
 import { View, Image } from '@tarojs/components'
 import { List, Loading } from '@taroify/core'
-import NavHeader from '@/components/nav_header'
 import { Ellipsis } from '@taroify/icons'
 import './index.scss'
 import usersService from '@/services/github/users.service'
 import dayjs from 'dayjs'
+import PageContainer from '@/components/page_container'
 
 const Index = (): JSX.Element => {
 	const [activities, setActivities] = useState<any[]>([])
@@ -57,8 +57,7 @@ const Index = (): JSX.Element => {
 	}
 
 	return (
-		<View className='activity-index-page'>
-			<NavHeader title='动态' />
+		<PageContainer containerClass='activity-index-page' title='动态'>
 			<List
 				loading={loading}
 				hasMore={hasMore}
@@ -89,7 +88,7 @@ const Index = (): JSX.Element => {
 					{!hasMore && '没有更多了'}
 				</List.Placeholder>
 			</List>
-		</View>
+		</PageContainer>
 	)
 }
 
