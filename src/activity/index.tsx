@@ -5,7 +5,8 @@
 import { usePageScroll } from '@tarojs/taro'
 import React, { useEffect, useState } from 'react'
 import { View, Image } from '@tarojs/components'
-import { Navbar, Sticky, List, Loading } from '@taroify/core'
+import { List, Loading } from '@taroify/core'
+import NavHeader from '@/components/nav_header'
 import { Ellipsis } from '@taroify/icons'
 import './index.scss'
 import usersService from '@/services/github/users.service'
@@ -57,9 +58,7 @@ const Index = (): JSX.Element => {
 
 	return (
 		<View className='activity-index-page'>
-			<Sticky>
-				<Navbar title='动态' />
-			</Sticky>
+			<NavHeader title='动态' />
 			<List
 				loading={loading}
 				hasMore={hasMore}
